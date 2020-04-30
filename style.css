@@ -12,8 +12,8 @@ header {
 }
 
 #contacts {
-    margin-top: 5%;
     color: #707070;
+    font-weight: bold;
 }
 
 .contacts_list {
@@ -22,18 +22,16 @@ header {
 }
 
 .contact {
-    border: 1px solid #b1b2b4;
+    border: 1px solid #ced4da;
     margin-top: 2%;
     margin-bottom: 2%;
+    border-radius: 3px;
     color: #707070;
-}
-
-#new_contact {
-    margin-top: 5%;
 }
 
 #new_contact > div {
     color: #707070;
+    font-weight: bold;
 }
 
 #contact_form {
