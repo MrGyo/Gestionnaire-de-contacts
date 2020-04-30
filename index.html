@@ -1,11 +1,69 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
     <head>
-        <meta charset="UTF-8">
-        <script>
-        </script>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css"/>
+        <title>Formulaire de contact</title>
     </head>
     <body>
+        <div id="wrapper">
+            <header></header>
+            <div class="container block-page">
+                <div class="row">
+                    <div class="col-md-6 block-1 pb-5">
+                        <div id="contacts">Mes Contacts</div>
+                        <nav>
+                            <ul class="contacts_list">
+                                <li class="contact">John Doe</li>
+                                <li class="contact">Bob le geek ! </li>
+                                <li class="contact">John Doe</li>
+                                <li class="contact">John Doe</li>
+                                <li class="contact">John Doe</li>
+                                <li class="contact">John Doe</li>
+                                <li class="contact">John Doe</li>
+                                <li class="contact">John Doe</li>
+                                <li class="contact">John Doe</li>
+                                <li class="contact">John Doe</li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-md-6 block-2 d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-center" id="new_contact">
+                            <div>Fiche Contact</div>
+                            <button type="submit" class="btn btn-primary float-right" id="form_button_1">Nouveau</button>
+                        </div>
+                        <div class="d-flex flex-column h-100">
+                            <form id="tab">
+                                <div class="form-group">
+                                    <input type="name" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Nom">
+                                </div>
+                                <div class="form-group">
+                                    <input type="firstName" class="form-control" id="firstName" aria-describedby="firstNameHelp" placeholder="Prénom">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email">
+                                </div>
+                            </form>
+                            <div class="flex-grow-1"></div>
+                            <div class="pb-5" id="modify">
+                                <button type="submit" class="btn btn-primary float-left" id="form_button_2">Modifier</button>
+                                <button type="submit" class="btn btn-primary float-right" id="form_button_3">Suprrimer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="main.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     </body>
-    <script src="main.js"></script>
 </html>
+
+
+
+
+    
