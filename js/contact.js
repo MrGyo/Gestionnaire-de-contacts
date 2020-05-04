@@ -14,13 +14,11 @@ class Contact {
         switch(type) {
             case "email":
  
-                
-
             default:
                 if (value.length <= 2)
                 {
                     let typeName = (type =="name") ? "nom" : "prénom";
-                    let promptQuestion = (value == "") ? "Le champ est vide, merci de le remplir" : "Le" + typeName + " " + value + " est invalide (trop petit). Merci d'entrer un autre nom";
+                    let promptQuestion = (value == "") ? "Le champ est vide, merci de le remplir" : "Le " + typeName + " " + value + " est invalide (trop petit). Merci d'entrer un autre nom";
                     let input = prompt(promptQuestion);
                     return this.checkField(input);
                 }
