@@ -21,7 +21,7 @@ a {
     font-weight: bold;
 }
 
-.contacts_list {
+#contacts_list {
     list-style: none;
     padding: 0;
 }
