@@ -55,13 +55,13 @@ class ContactManager {
     // Modification d'un contact du formulaire
     modifyContact() {
         //-- @TODO: 
-        //-- Renseigner un email pour trouver le contact -> une fois le contact trouvé dans le tableau Modifier en retutilisant la classe Contact si possible avec ces verifs de champs.
+        //-- Renseigner un email pour trouver le contact -> une fois le contact trouvé dans le tableau, modifier en réutilisant la classe Contact si possible avec ces verifs de champs.
     }
 
     // Suppression d'un contact du formulaire
     deleteContact() {
         //-- @TODO: 
-        //-- Renseigner un email pour trouver le contact -> une fois le contact trouvé dans le tableau this.contacts l'effacer
+        //-- Renseigner un email pour trouver le contact -> une fois le contact trouvé dans le tableau this.contacts, puis l'effacer
     }
 
     // Permettre à l'utilisateur de quitter le programme
