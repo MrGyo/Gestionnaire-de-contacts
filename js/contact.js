@@ -1,4 +1,4 @@
-/* On crée une classe Contact */
+/* On crée une classe Contact - Etapes 1 à 5 du TP */
 class Contact {
 
     /* On initialise dans cette classe Contact le constructor avec un nom, un prénom et un email */
