@@ -24,7 +24,7 @@ class Contact {
                 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value) === false)
                 {
                     /* Dans le cas où l'email est invalide, un prompt apparaît permettant à l'utilisateur de saisir une nouvelle adresse mail */
-                    let input = prompt("L'email est incorrect " + value + " , veuillez enter un email valide");
+                    let input = prompt("L'email " + value + " est incorrect, veuillez saisir un email valide !");
                     /* Une fois enregistrée, on retourne le contrôle de cette nouvelle valeur */
                     return this.checkField(input, type);
                 }
@@ -42,7 +42,7 @@ class Contact {
                     /* On initialise une variable typeName afin de distinguer si la valeur est un nom, sinon c'est un prénom (ternaire) */
                     let typeName = (type =="name") ? "nom" : "prénom";
                     /* On initialise une variable promptQuestion ayant recours à la variable typeName qui permettra l'affichage d'un message d'erreur dans le prompt */
-                    let promptQuestion = (value == "") ? "Le champ est vide, merci de le remplir" : "Le " + typeName + " " + value + " est invalide (trop petit). Merci d'entrer un autre nom";
+                    let promptQuestion = (value == "") ? "Le champ " + typeName + " est vide, merci de le remplir" : "Le " + typeName + " " + value + " est invalide. Veuillez saisir un " + typeName + " comportant au moins 3 caractères !";
                     /* On initialise une variable input pour lancer le prompt qui utilisera la variable promptQuestion */
                     let input = prompt(promptQuestion);
                     /* Une fois enregistrée, on retourne le contrôle de cette nouvelle valeur */
@@ -56,7 +56,4 @@ class Contact {
         }
     }
 }
-
-
-
 
