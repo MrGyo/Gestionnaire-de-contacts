@@ -11,7 +11,7 @@ class Contact {
 
     /* On crée une première méthode permettant d'afficher les infos contacts */
     displayInfo() {
-        return ` Name : ${this.name} First Name : ${this.firstName} Email : ${this.email}`;
+        return `Name : ${this.name} First Name : ${this.firstName} Email : ${this.email}`;
     }
 
     /* On crée une seconde méthode permettant le contrôle des infos saisies pour contact dans le main en passant par la valeur et le type de ce qu'on souhaite contrôler */
