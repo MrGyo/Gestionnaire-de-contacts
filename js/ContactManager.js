@@ -42,12 +42,32 @@ class ContactManager {
     modifyContact() {
         //-- @TODO: 
         //-- Renseigner un email pour trouver le contact -> une fois le contact trouvé dans le tableau, modifier en réutilisant la classe Contact si possible avec ces verifs de champs.
+        
     }
 
     /* On supprime un contact du formulaire */
+    
+    /* SOURCE */ 
+    /* var array = ['email@email.fr','gmail@gmail.com','js@js.net'];
+    var remove = function(removeMail){
+        var index = array.indexOf(removeMail);
+        if (index>-1) {
+            array.splice(index, 1);
+        }
+    }
+    remove(prompt("Entrez le mail que vous souhaitez supprimer : "));
+    console.log(array);*/
+
     deleteContact() {
-        //-- @TODO: 
-        //-- Renseigner un email pour trouver le contact -> une fois le contact trouvé dans le tableau this.contacts, puis l'effacer
+        var emailToDelete = prompt("Entrer le mail du contact que vous souhaitez supprimer : ")
+        var contactsFiltered = contactsConnard.find( item => item.email == 'groscon@y.fr' );
+        
+        let index = this.contacts.indexOf(contact);
+        if (index>-1) {
+            this.contacts.splice(index, 1);
+        }
+
+        
     }
 
     /* On permet à l'utilisateur de quitter le programme */
