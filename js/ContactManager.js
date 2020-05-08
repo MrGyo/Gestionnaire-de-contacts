@@ -23,12 +23,26 @@ class ContactManager {
     }
 
     /* On génère des prompts successifs pour ajouter un contact */
-    //-- @TODO Verifier que l'email n'existe pas déjà
     addContact() {
         const name = prompt("Quel est votre nom ?");
         const firstName = prompt("Quel est votre prénom ?");
-        const email = prompt("Quelle est votre adresse email ?");
 
+        /* Traitement particulier pour l'email car il faut vérifier qu'il n'ait pas déjà été saisi */
+        /* On initialise une variable control qui renvoie au tableau de contacts */
+        let emailToControl = this.contacts;
+        const email = prompt("Quelle est votre adresse email ?");
+        /* On initialise une variable qui permet de filtrer le tableau pour vérifier si le mail y figure */
+        let emailListFiltered = emailToControl.find(item => item.email == email);
+        /* On utilise la methode IndexOf de l'iobjet contacts qui va nous renvoyer  la valeur de l'index si l'objet passé en paramètre existe */
+        let index = emailToControl.indexOf(emailListFiltered);
+
+            if (index>-1) {
+                alert ('L\email ' + email + ' est déjà utilisé !');
+                return;
+                } else {
+                    console.log('mail valide');
+                }
+                
         /* On ajoute un nouveau contact au tableau du constructor */
         let contact = new Contact(name, firstName, email);
 
@@ -40,14 +54,17 @@ class ContactManager {
 
     /* On permet à l'utilisateur de modifier un contact*/
     modifyContact() {
+        /* On initialise une variable control qui renvoie au tableau de contacts */
         let contactsToModify = this.contacts;
+        /* On initialise une variable avec une fonction prompt pour la saisie de la question */
         let find = prompt("Entrer le mail du contact que vous souhaitez modifier : ");
+        /* On initialise une variable qui permet de filtrer le tableau pour vérifier si le mail y figure */
         let contactsListFiltered = contactsToModify.find(item => item.email == find);
         
         if (confirm('Vous êtes sur le point de modifier le contact ' + find +  ', êtes-vous sûr ?')) {
+            /* On utilise la methode IndexOf de l'iobjet contacts qui va nous renvoyer  la valeur de l'index si l'objet passé en paramètre existe */
             let index = contactsToModify.indexOf(contactsListFiltered);
             if (index>-1) { 
-
                 let name = prompt("Quel est votre nom ?");
                 let firstName = prompt("Quel est votre prénom ?");
                 let email = prompt("Quelle est votre adresse email ?");
@@ -61,34 +78,17 @@ class ContactManager {
         }
     }
 
-    /*
-    modifyContact2() {
-        let contactsToModify = this.contacts;
-        let find = prompt("Entrer le mail du contact que vous souhaitez modifier : ");
-        let contactsListFiltered = contactsToModify.find(item => item.email == find);
-
-        if (confirm('Vous êtes sur le point de modifier le contact ' + find +  ', êtes-vous sûr ?')) {
-            let index = contactsToModify.indexOf(contactsListFiltered);
-
-            if (index>-1) { 
-                contactsToModify[index].name = prompt("Quel est votre nom ?");
-                contactsToModify[index].firstName = prompt("Quel est votre prénom ?");
-                contactsToModify[index].email = prompt("Quelle est votre adresse email ?");
-                alert ('Le contact ' + contactsToModify[index].firstName + ' a été ajouté !');
-            } else {
-                alert ('La modification du contact ' + find +  ' est annulée !');
-            }
-        }
-    }*/
-
-
     /* On permet à l'utilisateur de supprimer un contact*/
     deleteContact() {
+        /* On initialise une variable control qui renvoie au tableau de contacts */
         let contactsToDelete = this.contacts;
+        /* On initialise une variable avec une fonction prompt pour la saisie de la question */
         let find = prompt("Entrer le mail du contact que vous souhaitez supprimer : ");
+        /* On initialise une variable qui permet de filtrer le tableau pour vérifier si le mail y figure */
         let contactsListFiltered = contactsToDelete.find(item => item.email == find);
 
         if (confirm('Vous êtes sur le point de supprimer le contact ' + find +  ', êtes-vous sûr ?')) {
+            /* On utilise la methode IndexOf de l'iobjet contacts qui va nous renvoyer  la valeur de l'index si l'objet passé en paramètre existe */
             let index = contactsToDelete.indexOf(contactsListFiltered);
             if (index>-1){
                 contactsToDelete.splice(index, 1);
