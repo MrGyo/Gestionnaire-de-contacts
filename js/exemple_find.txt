@@ -22,4 +22,40 @@ if (index>-1) {
 else {
   
 }
+
+
+
+
+
+
+
 console.log(contactsConnard)
+
+console.log("test recherche & filtre");
+
+var contacts = [{email:'superCon@y.fr222', nom: 'bob'}, 
+                {email: 'groscon@y.fr', nom: 'bob'},
+                {email: 'groscon@y.fr333', nom: 'bob4'},
+                {email: 'groscon@y.fr44', nom: 'bob3'},
+                {email: 'groscon@y.fr55', nom: 'bob2'},
+              ];
+
+var bob = 'groscon@';
+
+var contactsFiltered = contacts.find( item => item.email ==  bob);
+console.log(contactsFiltered);
+
+
+/// ---------
+
+let index = contacts.indexOf(contactsFiltered);
+
+console.log(index);
+
+if (index>-1) {
+  contacts.splice(index, 1);
+}
+else {
+  
+}
+console.log(contacts)

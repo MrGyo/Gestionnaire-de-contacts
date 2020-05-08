@@ -59,16 +59,22 @@ class ContactManager {
     console.log(array);*/
 
     deleteContact() {
-        var emailToDelete = prompt("Entrer le mail du contact que vous souhaitez supprimer : ")
-        var contactsFiltered = contactsConnard.find( item => item.email == 'groscon@y.fr' );
-        
-        let index = this.contacts.indexOf(contact);
-        if (index>-1) {
-            this.contacts.splice(index, 1);
-        }
 
-        
+        const contactsToFind = this.contacts
+
+        console.log(contactsToFind)
+
+        const find = prompt("Entrer le mail du contact que vous souhaitez supprimer : ");
+        const contactsListFiltered = contactsToFind.find(item => item.email == find);
+        const index = contactsToFind.indexOf(contactsListFiltered);
+
+        if (index>-1) {
+        contactsToFind.splice(index, 1);
+        }
+        else
+        console.log("Saisi incorrecte")
     }
+        
 
     /* On permet à l'utilisateur de quitter le programme */
     quit() {
