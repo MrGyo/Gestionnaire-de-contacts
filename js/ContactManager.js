@@ -38,44 +38,70 @@ class ContactManager {
         console.log("Contact ajouté !");
     }
 
-    /* On modifie un contact du formulaire */
+    /* On permet à l'utilisateur de modifier un contact*/
     modifyContact() {
-        //-- @TODO: 
-        //-- Renseigner un email pour trouver le contact -> une fois le contact trouvé dans le tableau, modifier en réutilisant la classe Contact si possible avec ces verifs de champs.
+        let contactsToModify = this.contacts;
+        let find = prompt("Entrer le mail du contact que vous souhaitez modifier : ");
+        let contactsListFiltered = contactsToModify.find(item => item.email == find);
         
-    }
+        if (confirm('Vous êtes sur le point de modifier le contact ' + find +  ', êtes-vous sûr ?')) {
+            let index = contactsToModify.indexOf(contactsListFiltered);
+            if (index>-1) { 
 
-    /* On supprime un contact du formulaire */
-    
-    /* SOURCE */ 
-    /* var array = ['email@email.fr','gmail@gmail.com','js@js.net'];
-    var remove = function(removeMail){
-        var index = array.indexOf(removeMail);
-        if (index>-1) {
-            array.splice(index, 1);
+                let name = prompt("Quel est votre nom ?");
+                let firstName = prompt("Quel est votre prénom ?");
+                let email = prompt("Quelle est votre adresse email ?");
+                let contact = new Contact(name, firstName, email);
+                this.contacts.push(contact);
+                contactsToModify.splice(index, 1);
+                alert ('Le contact ' + firstName + ' a été ajouté !');
+            } else {
+                alert ('La modification du contact ' + find +  ' est annulée !');
+            }
         }
     }
-    remove(prompt("Entrez le mail que vous souhaitez supprimer : "));
-    console.log(array);*/
 
+    /*
+    modifyContact2() {
+        let contactsToModify = this.contacts;
+        let find = prompt("Entrer le mail du contact que vous souhaitez modifier : ");
+        let contactsListFiltered = contactsToModify.find(item => item.email == find);
+
+        if (confirm('Vous êtes sur le point de modifier le contact ' + find +  ', êtes-vous sûr ?')) {
+            let index = contactsToModify.indexOf(contactsListFiltered);
+
+            if (index>-1) { 
+                contactsToModify[index].name = prompt("Quel est votre nom ?");
+                contactsToModify[index].firstName = prompt("Quel est votre prénom ?");
+                contactsToModify[index].email = prompt("Quelle est votre adresse email ?");
+                alert ('Le contact ' + contactsToModify[index].firstName + ' a été ajouté !');
+            } else {
+                alert ('La modification du contact ' + find +  ' est annulée !');
+            }
+        }
+    }*/
+
+
+    /* On permet à l'utilisateur de supprimer un contact*/
     deleteContact() {
+        let contactsToDelete = this.contacts;
+        let find = prompt("Entrer le mail du contact que vous souhaitez supprimer : ");
+        let contactsListFiltered = contactsToDelete.find(item => item.email == find);
 
-        const contactsToFind = this.contacts
-
-        console.log(contactsToFind)
-
-        const find = prompt("Entrer le mail du contact que vous souhaitez supprimer : ");
-        const contactsListFiltered = contactsToFind.find(item => item.email == find);
-        const index = contactsToFind.indexOf(contactsListFiltered);
-
-        if (index>-1) {
-        contactsToFind.splice(index, 1);
-        }
-        else
-        console.log("Saisi incorrecte")
+        if (confirm('Vous êtes sur le point de supprimer le contact ' + find +  ', êtes-vous sûr ?')) {
+            let index = contactsToDelete.indexOf(contactsListFiltered);
+            if (index>-1){
+                contactsToDelete.splice(index, 1);
+                console.log('Le contact ' + find + ' a été supprimé !');
+                alert ('Le contact ' + find +  ' a été supprimé !');
+            } else {
+                alert ('Saisie incorrecte !');   
+            }
+        } else {
+            alert ('La suppression du contact ' + find +  ' est annulée !');
+            }
     }
         
-
     /* On permet à l'utilisateur de quitter le programme */
     quit() {
         /* On procède à l'ouverture de la boîte de dialogue "confirm" pour demander confirmation à l'utilisateur s'il souhaite quitter ou non le programme */
