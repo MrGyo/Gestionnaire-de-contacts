@@ -26,7 +26,6 @@ class ContactManager {
     addContact() {
         const name = prompt("Quel est votre nom ?");
         const firstName = prompt("Quel est votre prénom ?");
-
         /* Traitement particulier pour l'email car il faut vérifier qu'il n'ait pas déjà été saisi */
         /* On initialise une variable control qui renvoie au tableau de contacts */
         let emailToControl = this.contacts;
