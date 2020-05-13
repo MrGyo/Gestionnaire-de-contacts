@@ -22,6 +22,23 @@ class ContactManager {
         }
     }
 
+    showAllHtml(){
+        /* On initialise une variable où on va rechercher l'élément ul ayant pour id #contact_list" */
+        let contactList = document.getElementById('contacts_list');
+        /* On vide nécessairement l'ajout texte en HTML sinon chaque ajout s'ajoute de nouveau au prochain ajout */
+        contactList.innerHTML = "";
+        /* On crée un boucle for qui va permettre d'ajouter les balises li en html concernant les contacts ajoutés */
+        for (let i=0; i < this.contacts.length; i++) {
+            var id = "contact" + i;
+            contactList.innerHTML += '<li class="contact"><a href="#" id="' + id + '" onclick="contactManager.editContact(\'' + this.contacts[i].email + '\')" >' + this.contacts[i].firstName + " " + this.contacts[i].name + '</a></li>';
+        }
+    }
+
+    editContact(email){
+        alert(email);
+        //-- CODE a ajouter pour afficher le contact selectionné
+    }
+
     /* On génère des prompts successifs pour ajouter un contact */
     addContact() {
         const name = prompt("Quel est votre nom ?");
@@ -47,6 +64,8 @@ class ContactManager {
 
         /* On réalise un push pour envoyer le nouveau contact dans l'array contacts du constructor */
         this.contacts.push(contact);
+        //-- Show contacts in DOM
+        this.showAllHtml();
         /* On confirme l'ajout dans la console */
         console.log("Contact ajouté !");
     }
