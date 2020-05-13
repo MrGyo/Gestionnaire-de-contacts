@@ -26,23 +26,15 @@
                         </div>
                         <div class="d-flex flex-column h-100" id="block-2">
                             <div id="contact_form">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="info">Nom :</div>
-                                    <div class="content">le nom apparaît</div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="info">Prénom :</div>
-                                    <div class="content">le prénom apparaît</div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="info">Email :</div>
-                                    <div class="content">l'email apparaît</div>
-                                </div>
+                                <input name = "name" type = "text" class="d-flex justify-content-between align-items-center" id="name">
+                                <input name = "first_name" type = "text" class="d-flex justify-content-between align-items-center info_contact" id="first_name">
+                                <input name = "email_contact"  type = "email" class="d-flex justify-content-between align-items-center info_contact" id="email_contact">
+                                <input type = "hidden" name = "id" id = "id" value = "">
                             </div>
                             <div class="flex-grow-1"></div>
                             <div class="pb-3" id="modify">
                                 <button type="submit" class="btn btn-primary float-left" id="form_button_2">Modifier</button>
-                                <button type="submit" class="btn btn-primary float-right" id="form_button_3">Suprrimer</button>
+                                <button type="submit" class="btn btn-primary float-right" id="form_button_3">Supprimer</button>
                             </div>
                         </div>
                     </div>

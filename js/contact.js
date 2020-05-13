@@ -2,11 +2,12 @@
 class Contact {
 
     /* On initialise dans cette classe Contact le constructor avec un nom, un prénom et un email */
-    constructor(name, firstName = "", email = "") {
+    constructor(name, firstName = "", email = "", id ="") {
         /* On passe une valeur ET un type pour permettre le contrôle des éléments saisis via la méthode checkField ci-dessous */
         this.name = this.checkField(name, "name"); 
         this.firstName = this.checkField(firstName, "firstName");
         this.email = this.checkField(email, "email");
+        this.id = id;
     }
 
     /* On crée une première méthode permettant d'afficher les infos contacts */
