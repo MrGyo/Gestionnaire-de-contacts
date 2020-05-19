@@ -43,6 +43,9 @@ a {
 #contact_form {
     margin-top: 2%;
     color: #707070;
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+    margin-bottom: 2%;
 }
 
 #form_button_1 {
@@ -64,8 +67,7 @@ a {
 }
 
 .info {
-    padding-top: 1%;
-    padding-bottom: 1%;
+    margin-left: 1%;
     margin-top: 1%;
     margin-bottom: 1%;
     color: #707070;
@@ -82,6 +84,11 @@ a {
     border-radius: 3px;
     color: #707070;
     width: 80%;
+}
+
+input {
+    border: none;
+    color: #707070;
 }
 
 

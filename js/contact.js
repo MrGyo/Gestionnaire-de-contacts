@@ -1,8 +1,8 @@
 /* On crée une classe Contact - Etapes 1 à 5 du TP */
 class Contact {
 
-    /* On initialise dans cette classe Contact le constructor avec un nom, un prénom et un email */
-    constructor(name, firstName = "", email = "", id ="") {
+    /* On initialise dans cette classe Contact le constructor avec un nom, un prénom, un email et une id */
+    constructor(name = "", firstName = "", email = "", id ="") {
         /* On passe une valeur ET un type pour permettre le contrôle des éléments saisis via la méthode checkField ci-dessous */
         this.name = this.checkField(name, "name"); 
         this.firstName = this.checkField(firstName, "firstName");
@@ -12,7 +12,7 @@ class Contact {
 
     /* On crée une première méthode permettant d'afficher les infos contacts */
     displayInfo() {
-        return `Name : ${this.name} First Name : ${this.firstName} Email : ${this.email}`;
+        return 'Name : ' + this.name + ' First Name : ' + this.firstName +  ' Email ';
     }
 
     /* On crée une seconde méthode permettant le contrôle des infos saisies pour contact dans le main en passant par la valeur et le type de ce qu'on souhaite contrôler */
@@ -34,26 +34,55 @@ class Contact {
                     /* Sinon le mail est valide et on retourne la valeur */
                     return value;
                 }
-           
-            default:
-                /* Puis on utilise "default" pour tester successivement les types restants prévus au constructor : nom et prénom */
-                /* Si le string value est inf. ou = 2 alors on entre dans l'alternative de la condition */
+            
+            case "name":
+                /* Vérification de la longueur minimum (2) du nom et correction via un prompt */
                 if (value.length <= 2)
                 {
-                    /* On initialise une variable typeName afin de distinguer si la valeur est un nom, sinon c'est un prénom (ternaire) */
-                    let typeName = (type =="name") ? "nom" : "prénom";
-                    /* On initialise une variable promptQuestion ayant recours à la variable typeName qui permettra l'affichage d'un message d'erreur dans le prompt */
-                    let promptQuestion = (value == "") ? "Le champ " + typeName + " est vide, merci de le remplir" : "Le " + typeName + " " + value + " est invalide. Veuillez saisir un " + typeName + " comportant au moins 3 caractères !";
-                    /* On initialise une variable input pour lancer le prompt qui utilisera la variable promptQuestion */
+                    /* On déclare une variable promptQuestion avec une condition intégrée si le champs est vide, sinon on indique que le nom est invalide si <= 2 strings */
+                    let promptQuestion = (value == "") ? "Le champ nom est vide, merci de le remplir" : "Le nom est invalide, veuillez saisir un nom comportant au moins 3 caractères";
+                    /* on déclare une nouvelle variable pour afficher la question du prompt en fonction du cas de figure */
                     let input = prompt(promptQuestion);
-                    /* Une fois enregistrée, on retourne le contrôle de cette nouvelle valeur */
+                    /* on retourne la saisie faite via le prompt */
                     return this.checkField(input, type);
                 }
                 else
                 {
-                    /* Sinon le nom et/ou le prénom est valide et on retourne la valeur */
+                    /* Sinon on retourne initialement la valeur saisie */
                     return value;
                 }
+            
+            case "firstName":
+                /* Vérification de la longueur minimum (2) du prénom et correction via un prompt */
+                if (value.length <= 2)
+                {
+                    /* On déclare une variable promptQuestion avec une condition intégrée si le champs est vide, sinon on indique que le prénom est invalide si <= 2 strings */
+                    let promptQuestion = (value == "") ? "Le champ nom est vide, merci de le remplir" : "Le prénom est invalide, veuillez saisir un nom comportant au moins 3 caractères";
+                    /* on déclare une nouvelle variable pour afficher la question du prompt en fonction du cas de figure */
+                    let input = prompt(promptQuestion);
+                    /* on retourne la saisie faite via le prompt */
+                    return this.checkField(input, type);
+                }
+                else
+                {
+                    /* Sinon on retourne initialement la valeur saisie */
+                    return value;
+                }
+
+           
+            /*default:
+
+                if (value.length <= 2)
+                {
+                    let typeName = (type =="name") ? "nom" : "prénom";
+                    let promptQuestion = (value == "") ? "Le champ " + typeName + " est vide, merci de le remplir" : "Le " + typeName + " " + value + " est invalide. Veuillez saisir un " + typeName + " comportant au moins 3 caractères !";
+                    let input = prompt(promptQuestion);
+                    return this.checkField(input, type);
+                }
+                else
+                {
+                    return value;
+                }*/
         }
     }
 }

@@ -6,7 +6,7 @@ class ContactManager {
         this.contacts = [];
     }
 
-    /* On crée de la méthode qui initialise le programme de saisi du contact*/
+    /* On crée la méthode qui initialise le programme de saisi du contact*/
     init() {
         /* Affichage d'un message de bienvenue*/
         console.log("Bienvenue dans le formulaire de contacts !")
@@ -18,29 +18,36 @@ class ContactManager {
     showAll() {
         for (let contact of this.contacts) {
             /* Affichage un à un des contacts enregistrés dans l'array avec les 3 values nom, prénom et adresse mail */
-            console.log(`Nom: ${contact.name}, Prénom: ${contact.firstName}, Email: ${contact.email}`);
+            console.log('Nom : ' + contact.name + ', Prénom : ' + contact.firstName + ', Email : ' + contact.email);
         }
     }
 
-    /*showAllHtml(){
+    showAllHtml(){
+        /* On déclare une variable qui va chercher l'id du ul où souhaite ajouter des li*/
         let contactList = document.getElementById('contacts_list');
+        /* on vide systématiquement à chaque ajout pour éviter de rajouter de nouveau les contacts déjà saisis */
         contactList.innerHTML = "";
+        /* On crée une boucle forEach pour l'affichage de chaque contact saisi */
         this.contacts.forEach (contact => {
+            /* On crée l'élément li */
             let li = document.createElement("li");
-            li.textContent = `${contact.name}, ${contact.firstName}`;
+            /* On indique que le contenu textuel de ce élément li est le nom et le prénom */
+            li.textContent = contact.name + " " + contact.firstName;
+            /* On donne une class "contact" à chaque élément li */
             li.classList.add("contact");
+            /* On donne une id à chaque contact qui sa position dans l'array */
             li.id = "contact-" + contact.id;
+            /* Lorsqu'on clique sur un utilisateur il apparaît dans le tableau de droite */
             li.addEventListener ("click", (e) => {
-                //let id = e.target.id.split("-")[1];
-                //console.log(id);
-                document.getElementById("name").value = contact.name;
-                document.getElementById("first_name").value = contact.firstName;
-                document.getElementById("email_contact").value = contact.email;
+                document.getElementById("name").value = " " + contact.name;
+                document.getElementById("first_name").value = " " + contact.firstName;
+                document.getElementById("email_contact").value = " " + contact.email;
                 document.getElementById("id").value = contact.id;
             } )
+            /* on ajout un nouvel enfant li au parent ul */
             contactList.appendChild(li);
         })
-    }*/
+    }
 
     /* On génère des prompts successifs pour ajouter un contact */
     addContact() {
@@ -64,12 +71,13 @@ class ContactManager {
                 
         /* On ajoute un nouveau contact au tableau du constructor */
         let contact = new Contact(name, firstName, email);
+        /* l'id du contact est égal à sa place dans la saisie du formulaire */
         contact.id = this.contacts.length;
 
         /* On réalise un push pour envoyer le nouveau contact dans l'array contacts du constructor */
         this.contacts.push(contact);
         //-- Show contacts in DOM
-        // this.showAllHtml();
+        this.showAllHtml();
         /* On confirme l'ajout dans la console */
         console.log("Contact ajouté !");
     }
@@ -94,7 +102,7 @@ class ContactManager {
                 this.contacts.push(contact);
                 contactsToModify.splice(index, 1);
                 alert ('Le contact ' + firstName + ' a été ajouté !');
-                // this.showAllHtml();
+                this.showAllHtml();
             } else {
                 alert ('La modification du contact ' + find +  ' est annulée !');
             }
@@ -109,9 +117,8 @@ class ContactManager {
         let find = prompt("Entrer le mail du contact que vous souhaitez supprimer : ");
         /* On initialise une variable qui permet de filtrer le tableau pour vérifier si le mail y figure */
         let contactsListFiltered = contactsToDelete.find(item => item.email == find);
-
         if (confirm('Vous êtes sur le point de supprimer le contact ' + find +  ', êtes-vous sûr ?')) {
-            /* On utilise la methode IndexOf de l'iobjet contacts qui va nous renvoyer  la valeur de l'index si l'objet passé en paramètre existe */
+            /* On utilise la methode IndexOf de l'objet contacts qui va nous renvoyer  la valeur de l'index si l'objet passé en paramètre existe */
             let index = contactsToDelete.indexOf(contactsListFiltered);
             if (index>-1){
                 contactsToDelete.splice(index, 1);
