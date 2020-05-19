@@ -47,6 +47,8 @@ class ContactManager {
             /* on ajout un nouvel enfant li au parent ul */
             contactList.appendChild(li);
         })
+        //-- Save to local data
+        this.saveLocal();
     }
 
     /* On génère des prompts successifs pour ajouter un contact */
@@ -159,6 +161,8 @@ class ContactManager {
             }
         } 
     }
+
+    // -- idée jerem, voir désactiver le bouton quand personne de sélectionner
  
     /* On permet à l'utilisateur de quitter le programme */
     quit() {
@@ -215,5 +219,14 @@ class ContactManager {
             break;
         }
         this.displayMenu();
+    }
+
+    saveLocal (){
+        let stringContacts = JSON.stringify(contactManager.contacts);
+        localStorage.setItem(LABEL_VAR_LOCAL_STORAGE,stringContacts);
+    }
+
+    loadLocal(stringContacts){
+        this.contacts = JSON.parse(stringContacts);
     }
 }

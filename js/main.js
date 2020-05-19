@@ -1,5 +1,15 @@
 /* Création d'un contact manager */
+//let contactManager = new ContactManager()
+
+const LABEL_VAR_LOCAL_STORAGE = "contact_app_gyo";
+
 let contactManager = new ContactManager()
+
+var stringContacts = localStorage.getItem(LABEL_VAR_LOCAL_STORAGE);
+
+if (stringContacts) {
+    contactManager.loadLocal(stringContacts);
+}
 
 /* Initialisation du Contact Manager */
 //contactManager.init()
