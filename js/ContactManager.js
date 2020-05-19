@@ -84,54 +84,82 @@ class ContactManager {
 
     /* On permet à l'utilisateur de modifier un contact*/
     modifyContact() {
-        /* On initialise une variable control qui renvoie au tableau de contacts */
+        /* On déclare une variable renvoyant au tableau de contacts du formulaire */
         let contactsToModify = this.contacts;
-        /* On initialise une variable avec une fonction prompt pour la saisie de la question */
-        let find = prompt("Entrer le mail du contact que vous souhaitez modifier : ");
-        /* On initialise une variable qui permet de filtrer le tableau pour vérifier si le mail y figure */
-        let contactsListFiltered = contactsToModify.find(item => item.email == find);
-        
-        if (confirm('Vous êtes sur le point de modifier le contact ' + find +  ', êtes-vous sûr ?')) {
-            /* On utilise la methode IndexOf de l'iobjet contacts qui va nous renvoyer  la valeur de l'index si l'objet passé en paramètre existe */
+        /* On déclare une variable find pour aller trouver le contact figurant dans la fiche contact à modifier */
+        let find = document.getElementById("email_contact").value;
+        /* Si l'email est vide c'est que l'utilisateur n'a pas cliqué sur un contact à modifier */
+        if (find === "") {
+            alert ('Veuillez cliquer sur le contact à modifier !');
+        } else {
+            /* Sinon on procède à la modification du contact en filtrant la liste des contacts sur la base du mail trouvé dans la fiche contact */
+            let contactsListFiltered = contactsToModify.find(item => item.email == find);
+            /* On demande une confirmation de modification */
+            if (confirm('Vous êtes sur le point de modifier le contact ' + find +  ', êtes-vous sûr ?')) {
+            /* On utilise la methode IndexOf de l'objet contacts qui va nous renvoyer la valeur de l'index si l'objet passé en paramètre existe */
             let index = contactsToModify.indexOf(contactsListFiltered);
-            if (index>-1) { 
-                let name = prompt("Quel est votre nom ?");
-                let firstName = prompt("Quel est votre prénom ?");
-                let email = prompt("Quelle est votre adresse email ?");
-                let contact = new Contact(name, firstName, email);
-                this.contacts.push(contact);
-                contactsToModify.splice(index, 1);
-                alert ('Le contact ' + firstName + ' a été ajouté !');
-                this.showAllHtml();
+                if (index>-1) { 
+                    let name = prompt("Quel est votre nom ?");
+                    let firstName = prompt("Quel est votre prénom ?");
+                    let email = prompt("Quelle est votre adresse email ?");
+                    /* Nouveau contact créé sur la base du constructor de Contact.js */
+                    let contact = new Contact(name, firstName, email);
+                    /* On ajoute le nouveau contact à la list de contacts */
+                    this.contacts.push(contact);
+                    /* On supprime l'ancienne version du contact qu'on souhaitait modifier */
+                    contactsToModify.splice(index, 1);
+                    /* On fait appel à la méthode showAllHtml pour afficher le contact dans le formulaire */
+                    this.showAllHtml();
+                    /* On attribue de nouvelles valeurs sur la base de la modification effectuée */
+                    document.getElementById("name").value = " " + contact.name;
+                    document.getElementById("first_name").value = " " + contact.firstName;
+                    document.getElementById("email_contact").value = " " + contact.email;
+                    document.getElementById("id").value = contact.id;
+                    alert ('La modification du contact ' + find +  ' est effectuée !');
+                } else {
+                    alert ('Saisie incorrecte !');
+                }
             } else {
                 alert ('La modification du contact ' + find +  ' est annulée !');
             }
-        }
+        } 
     }
 
-    /* On permet à l'utilisateur de supprimer un contact*/
+     /* On permet à l'utilisateur de supprimer un contact*/
     deleteContact() {
-        /* On initialise une variable control qui renvoie au tableau de contacts */
+        /* On déclare une variable renvoyant au tableau de contacts du formulaire */
         let contactsToDelete = this.contacts;
-        /* On initialise une variable avec une fonction prompt pour la saisie de la question */
-        let find = prompt("Entrer le mail du contact que vous souhaitez supprimer : ");
-        /* On initialise une variable qui permet de filtrer le tableau pour vérifier si le mail y figure */
-        let contactsListFiltered = contactsToDelete.find(item => item.email == find);
-        if (confirm('Vous êtes sur le point de supprimer le contact ' + find +  ', êtes-vous sûr ?')) {
-            /* On utilise la methode IndexOf de l'objet contacts qui va nous renvoyer  la valeur de l'index si l'objet passé en paramètre existe */
-            let index = contactsToDelete.indexOf(contactsListFiltered);
-            if (index>-1){
-                contactsToDelete.splice(index, 1);
-                console.log('Le contact ' + find + ' a été supprimé !');
-                alert ('Le contact ' + find +  ' a été supprimé !');
-            } else {
-                alert ('Saisie incorrecte !');   
-            }
+        /* On déclare une variable find pour aller trouver le contact figurant dans la fiche contact à supprimer */
+        let find = document.getElementById("email_contact").value;
+        /* Si l'email est vide c'est que l'utilisateur n'a pas cliqué sur un contact à supprimer */
+        if (find === "") {
+            alert ('Veuillez cliquer sur le contact à supprimer !');
         } else {
-            alert ('La suppression du contact ' + find +  ' est annulée !');
+            /* Sinon on procède à la modification du contact en filtrant la liste des contacts sur la base du mail trouvé dans la fiche contact */
+            let contactsListFiltered = contactsToDelete.find(item => item.email == find);
+             /* On demande une confirmation de suppression */
+            if (confirm('Vous êtes sur le point de supprimer le contact ' + find +  ', êtes-vous sûr ?')) {
+            /* On utilise la methode IndexOf de l'objet contacts qui va nous renvoyer  la valeur de l'index si l'objet passé en paramètre existe */
+                let index = contactsToDelete.indexOf(contactsListFiltered);
+                if (index>-1){
+                    /* On procède à la suppression du contact */
+                    contactsToDelete.splice(index, 1);
+                    /* On fait appel à la méthode showAllHtml experger du contact supprimé */
+                    this.showAllHtml();
+                    /* On attribue une valeur "vide" à chacun des types du contact */
+                    document.getElementById("name").value = "";
+                    document.getElementById("first_name").value = "";
+                    document.getElementById("email_contact").value = "";
+                    alert ('Le contact ' + find +  ' a été supprimé !');
+                } else {
+                    alert ('Saisie incorrecte !');   
+                }
+            } else {
+                alert ('La suppression du contact ' + find +  ' est annulée !');
             }
+        } 
     }
-        
+ 
     /* On permet à l'utilisateur de quitter le programme */
     quit() {
         /* On procède à l'ouverture de la boîte de dialogue "confirm" pour demander confirmation à l'utilisateur s'il souhaite quitter ou non le programme */
