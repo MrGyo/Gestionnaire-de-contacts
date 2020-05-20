@@ -67,7 +67,18 @@ Créez maintenant la possibilité de supprimer un contact de la liste. Libre à 
 10 - Gestionnaire de contacts : Modifier un contact
 Maintenant nous désirons pouvoir changer les informations d'un contact. On doit pouvoir modifier, le nom, le prénom où l'email.
 
-11 - Création d'une interface Graphique
+11 - Persister les données localement
+Lorsque l'on ajoute, modifie ou supprime un contact, faire en sorte que la liste des contacts soit sauvegardée dans le localStorage.
+
+Lorsque l'on relance l'application, nous récupérons les contacts présents dans le localStorage et nous intégrons à notre application
+
+12 - Création d'une interface Graphique
 En vous basant sur le design AdobeXD proposé ici, implémentez l'interface graphique.
 
-12 - Persister les donnée localement
+13 - Connectez l'interface avec l'application
+Maintenant que l'interface de l'application est créée, il est temps pour nous de connecter notre application à l'interface graphique. Cela va demander quelques modifications dans notre code.
+
+1 - Afficher la liste des contacts présents dans l' application dans la liste présente à gauche de l'interface
+2 - Lorsque l'on clique sur un contact afficher les détails du contact dans le cadre de droite. 
+3 - Lorsque l'on clique sur "Modifier" donner la possibilité de modifier la fiche contact
+4 - Lorsque l'on clique sur supprimer une fenêtre de confirmation nous demande de confirmer notre choix. Après confirmation le contact est supprim
