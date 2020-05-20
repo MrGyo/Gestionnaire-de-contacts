@@ -9,9 +9,9 @@ class ContactManager {
     /* On crée la méthode qui initialise le programme de saisi du contact*/
     init() {
         /* Affichage d'un message de bienvenue*/
-        console.log("Bienvenue dans le formulaire de contacts !")
+        console.log("Bienvenue dans le formulaire de contacts !");
         /* Recours à la méthode displayMenu pour l'ouverture de la boîte de dialogue après initialisation*/
-        this.displayMenu()
+        this.displayMenu();
     }
 
     /* On montre tous les contacts du tableaux initié par le constructor grâce à une boucle for */
@@ -103,9 +103,9 @@ class ContactManager {
             let index = contactsToModify.indexOf(contactsListFiltered);
                 if (index>-1) { 
                     // -- TODO Voir méthode modification directe du contact sans passer par une suppression, afin que le contact soit au même index 
-                    let name = prompt("Quel est votre nom ?");
-                    let firstName = prompt("Quel est votre prénom ?");
-                    let email = prompt("Quelle est votre adresse email ?");
+                    let name = prompt("Quel est votre nom ?", contactsListFiltered.name);
+                    let firstName = prompt("Quel est votre prénom ?", contactsListFiltered.firstName);
+                    let email = prompt("Quelle est votre adresse email ?", contactsListFiltered.email);
                     /* Nouveau contact créé sur la base du constructor de Contact.js */
                     // Autre méthode vu avec mentor
                     contactsListFiltered.modify(name, firstName, email);
@@ -227,15 +227,17 @@ class ContactManager {
 
     saveLocal () {
         let stringContacts = JSON.stringify(contactManager.contacts);
-        localStorage.setItem(LABEL_VAR_LOCAL_STORAGE,stringContacts);
+        localStorage.setItem(LABEL_VAR_LOCAL_STORAGE, stringContacts);
     }
 
     loadLocal(stringContacts) {
         let list = JSON.parse(stringContacts);
+        //this.contacts = list;
+
         list.forEach(element => {
-        let contact = new Contact();
-        contact.setFromJSON(element);
-        this.contacts.push(contact);
+            let contact = new Contact();
+            contact.setFromJSON(element);
+            this.contacts.push(contact);
         });
     }
 }

@@ -1,13 +1,13 @@
+const LABEL_VAR_LOCAL_STORAGE = "contact_app_gyo";
+
 /* Création d'un contact manager */
 //let contactManager = new ContactManager()
-
-const LABEL_VAR_LOCAL_STORAGE = "contact_app_gyo";
 
 let contactManager = new ContactManager()
 
 var stringContacts = localStorage.getItem(LABEL_VAR_LOCAL_STORAGE);
 
-if (stringContacts) {
+if (stringContacts != undefined) {
     contactManager.loadLocal(stringContacts);
 }
 
