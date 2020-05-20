@@ -25,7 +25,7 @@ class ContactManager {
     showAllHtml(){
         /* On déclare une variable qui va chercher l'id du ul où souhaite ajouter des li*/
         let contactList = document.getElementById('contacts_list');
-        /* on vide systématiquement à chaque ajout pour éviter de rajouter de nouveau les contacts déjà saisis */
+        /* On vide systématiquement à chaque ajout pour éviter de rajouter de nouveau les contacts déjà saisis */
         contactList.innerHTML = "";
         /* On crée une boucle forEach pour l'affichage de chaque contact saisi */
         this.contacts.forEach (contact => {
@@ -39,9 +39,9 @@ class ContactManager {
             li.id = "contact-" + contact.id;
             /* Lorsqu'on clique sur un utilisateur il apparaît dans le tableau de droite */
             li.addEventListener ("click", (e) => {
-                document.getElementById("name").value = " " + contact.name;
-                document.getElementById("first_name").value = " " + contact.firstName;
-                document.getElementById("email_contact").value = " " + contact.email;
+                document.getElementById("name").value = contact.name;
+                document.getElementById("first_name").value = contact.firstName;
+                document.getElementById("email_contact").value = contact.email;
                 document.getElementById("id").value = contact.id;
             } )
             /* on ajout un nouvel enfant li au parent ul */
@@ -72,7 +72,8 @@ class ContactManager {
                 }
                 
         /* On ajoute un nouveau contact au tableau du constructor */
-        let contact = new Contact(name, firstName, email);
+        let contact = new Contact();
+        contact.setFromForm(name, firstName, email);
         /* l'id du contact est égal à sa place dans la saisie du formulaire */
         contact.id = this.contacts.length;
 
@@ -101,22 +102,25 @@ class ContactManager {
             /* On utilise la methode IndexOf de l'objet contacts qui va nous renvoyer la valeur de l'index si l'objet passé en paramètre existe */
             let index = contactsToModify.indexOf(contactsListFiltered);
                 if (index>-1) { 
+                    // -- TODO Voir méthode modification directe du contact sans passer par une suppression, afin que le contact soit au même index 
                     let name = prompt("Quel est votre nom ?");
                     let firstName = prompt("Quel est votre prénom ?");
                     let email = prompt("Quelle est votre adresse email ?");
                     /* Nouveau contact créé sur la base du constructor de Contact.js */
-                    let contact = new Contact(name, firstName, email);
+                    // Autre méthode vu avec mentor
+                    contactsListFiltered.modify(name, firstName, email);
+                    // let contact = new Contact(name, firstName, email);
                     /* On ajoute le nouveau contact à la list de contacts */
-                    this.contacts.push(contact);
+                    // this.contacts.push(contact);
                     /* On supprime l'ancienne version du contact qu'on souhaitait modifier */
-                    contactsToModify.splice(index, 1);
+                    // contactsToModify.splice(index, 1);
                     /* On fait appel à la méthode showAllHtml pour afficher le contact dans le formulaire */
                     this.showAllHtml();
                     /* On attribue de nouvelles valeurs sur la base de la modification effectuée */
-                    document.getElementById("name").value = " " + contact.name;
-                    document.getElementById("first_name").value = " " + contact.firstName;
-                    document.getElementById("email_contact").value = " " + contact.email;
-                    document.getElementById("id").value = contact.id;
+                    document.getElementById("name").value = contactsListFiltered.name;
+                    document.getElementById("first_name").value = contactsListFiltered.firstName;
+                    document.getElementById("email_contact").value = contactsListFiltered.email;
+                    document.getElementById("id").value = contactsListFiltered.id;
                     alert ('La modification du contact ' + find +  ' est effectuée !');
                 } else {
                     alert ('Saisie incorrecte !');
@@ -221,12 +225,17 @@ class ContactManager {
         this.displayMenu();
     }
 
-    saveLocal (){
+    saveLocal () {
         let stringContacts = JSON.stringify(contactManager.contacts);
         localStorage.setItem(LABEL_VAR_LOCAL_STORAGE,stringContacts);
     }
 
-    loadLocal(stringContacts){
-        this.contacts = JSON.parse(stringContacts);
+    loadLocal(stringContacts) {
+        let list = JSON.parse(stringContacts);
+        list.forEach(element => {
+        let contact = new Contact();
+        contact.setFromJSON(element);
+        this.contacts.push(contact);
+        });
     }
 }

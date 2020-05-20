@@ -4,15 +4,34 @@ class Contact {
     /* On initialise dans cette classe Contact le constructor avec un nom, un prénom, un email et une id */
     constructor(name = "", firstName = "", email = "", id ="") {
         /* On passe une valeur ET un type pour permettre le contrôle des éléments saisis via la méthode checkField ci-dessous */
+        this.name = name !== "" ? this.checkField(name, "name") : ""; 
+        this.firstName = firstName !== "" ? this.checkField(firstName, "firstName") : "";
+        this.email = email !== "" ? this.checkField(email, "email") : "";
+        this.id = id;
+    }
+
+    setFromForm(name, firstName, email) {
         this.name = this.checkField(name, "name"); 
         this.firstName = this.checkField(firstName, "firstName");
         this.email = this.checkField(email, "email");
-        this.id = id;
+    }
+
+    setFromJSON(element) {
+        this.name = element.name;
+        this.firstName = element.firstName;
+        this.email = element.email;
+        this.id = element.id;
     }
 
     /* On crée une première méthode permettant d'afficher les infos contacts */
     displayInfo() {
         return 'Name : ' + this.name + ' First Name : ' + this.firstName +  ' Email ';
+    }
+
+    modify(name, firstName, email) {
+        this.name = this.checkField(name, "name");
+        this.firstName = this.checkField(firstName, "firstName");
+        this.email = this.checkField(email, "email");
     }
 
     /* On crée une seconde méthode permettant le contrôle des infos saisies pour contact dans le main en passant par la valeur et le type de ce qu'on souhaite contrôler */
