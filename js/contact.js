@@ -23,7 +23,7 @@ class Contact {
         this.id = element.id;
     }
 
-    /* On crée une première méthode permettant d'afficher les infos contacts */
+    /* On crée une première méthode permettant d'afficher les infos contacts ! */
     displayInfo() {
         return 'Name : ' + this.name + ' First Name : ' + this.firstName +  ' Email ';
     }
