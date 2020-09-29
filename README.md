@@ -1,6 +1,5 @@
-# tp_p5_oc
+# Exercice POO Javascript : Gestionnaire de contact
 
-Exercice POO Javascript : Gestionnaire de contact
 Dans cet exercice nous allons réaliser un gestionnaire de contacts. L'idée est dans un premier temps de réaliser quelque chose qui fonctionnera dans la console de notre navigateur. Puis nous travaillerons directement dans notre page web avec le DOM. Finalement nous travaillerons ave une API afin de sauvegarder à distance nos contacts.
 
 Le point d'entrée de notre application se fera dans un fichier que vous appelerez main.js
@@ -78,7 +77,7 @@ En vous basant sur le design AdobeXD proposé ici, implémentez l'interface grap
 13 - Connectez l'interface avec l'application
 Maintenant que l'interface de l'application est créée, il est temps pour nous de connecter notre application à l'interface graphique. Cela va demander quelques modifications dans notre code.
 
-1 - Afficher la liste des contacts présents dans l' application dans la liste présente à gauche de l'interface
-2 - Lorsque l'on clique sur un contact afficher les détails du contact dans le cadre de droite. 
-3 - Lorsque l'on clique sur "Modifier" donner la possibilité de modifier la fiche contact
-4 - Lorsque l'on clique sur supprimer une fenêtre de confirmation nous demande de confirmer notre choix. Après confirmation le contact est supprim
+* Afficher la liste des contacts présents dans l' application dans la liste présente à gauche de l'interface
+* Lorsque l'on clique sur un contact afficher les détails du contact dans le cadre de droite. 
+* Lorsque l'on clique sur "Modifier" donner la possibilité de modifier la fiche contact
+* Lorsque l'on clique sur supprimer une fenêtre de confirmation nous demande de confirmer notre choix. Après confirmation le contact est supprim
