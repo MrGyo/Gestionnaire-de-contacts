@@ -23,7 +23,7 @@ class ContactManager {
     }
 
     showAllHtml(){
-        /* On déclare une variable qui va chercher l'id du ul où souhaite ajouter des li*/
+        /* On déclare une variable qui va chercher l'id du ul où on souhaite ajouter des li*/
         let contactList = document.getElementById('contacts_list');
         /* On vide systématiquement à chaque ajout pour éviter de rajouter de nouveau les contacts déjà saisis */
         contactList.innerHTML = "";
